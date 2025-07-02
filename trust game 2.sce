@@ -301,10 +301,10 @@ picture { text cross; x=0; y=0;
 		box horiz; x=0; y=-264;
 		} cursor40;
 			 
-trial { picture p1person; duration = 3000;} p1vsperson;
-trial { picture p1computer; duration = 3000;} p1vscomputer;
-trial { picture p2person; duration = 3000;} p2vsperson;
-trial { picture p2computer; duration = 3000;} p2vscomputer;
+trial { picture p1person; duration = 500;} p1vsperson;
+trial { picture p1computer; duration = 500;} p1vscomputer;
+trial { picture p2person; duration = 500;} p2vsperson;
+trial { picture p2computer; duration = 500;} p2vscomputer;
 trial { picture wait; duration = 6000;} waiting;
 trial { picture decided; duration = 3000;} decision;
 trial { picture fix; duration = 15000;} fixing;
