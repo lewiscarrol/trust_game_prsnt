@@ -1,7 +1,7 @@
 scenario = "trust game";
-scenario_type = fMRI_emulation;
-#scenario_type = fMRI;
-scan_period = 3000;
+scenario_type = MEG_emulation;
+#scenario_type = MEG;
+scan_period = 500;
 response_matching = simple_matching;
 no_logfile = false;
 sequence_interrupt=false; #default
