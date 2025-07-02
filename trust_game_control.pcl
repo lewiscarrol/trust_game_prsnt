@@ -1,0 +1,64 @@
+# trust_game_control.pcl
+
+# Load mouse as joystick for cursor selection
+mouse stick = response_manager.get_mouse(1);
+stick.set_min_max(1, -1, 1);
+stick.set_min_max(2, -264, 220);
+
+# Randomly assign player role and opponent type
+int player_role = random(1,2);   # 1 = Player 1, 2 = Player 2
+int opponent_type = random(1,2); # 1 = Person, 2 = Computer
+
+# Log condition for analysis
+term.print("Player Role: " + string(player_role) + " Opponent Type: " + string(opponent_type) + "\n");
+
+# Present instruction screen based on condition
+if (player_role == 1 && opponent_type == 1) then
+    p1vsperson.present();
+elseif (player_role == 1 && opponent_type == 2) then
+    p1vscomputer.present();
+elseif (player_role == 2 && opponent_type == 1) then
+    p2vsperson.present();
+elseif (player_role == 2 && opponent_type == 2) then
+    p2vscomputer.present();
+end;
+
+# Fixation before task
+fixing.present();
+
+# Decision Phase
+if player_role == 1 then
+    # Player 1 selects how much to send using cursor interface
+    # Calls box10 for 8 seconds as example; adjust as needed
+    box10(8000);
+    
+    # Display "waiting" screen while Player 2 decides
+    waiting.present();
+    
+    # Simulate return from Player 2 (person/computer)
+    if opponent_type == 1 then
+        dm2person(8000);
+        decidedperson.present();
+    else
+        dm2comp(8000);
+        decidedcomp.present();
+    end;
+    
+elseif player_role == 2 then
+    # Display "waiting" screen while Player 1 sends
+    waiting.present();
+    
+    # Simulate sending from Player 1 (person/computer)
+    if opponent_type == 1 then
+        dm2person(8000);
+        decidedperson.present();
+    else
+        dm2comp(8000);
+        decidedcomp.present();
+    end;
+end;
+
+# Fixation at end
+fixing.present();
+
+# End of control script
